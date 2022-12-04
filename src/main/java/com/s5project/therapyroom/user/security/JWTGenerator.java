@@ -1,4 +1,4 @@
-package com.s5project.therapyroom.security;
+package com.s5project.therapyroom.user.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

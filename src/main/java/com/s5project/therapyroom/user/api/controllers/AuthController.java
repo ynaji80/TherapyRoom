@@ -1,11 +1,13 @@
-package com.s5project.therapyroom.api.controllers;
+package com.s5project.therapyroom.user.api.controllers;
 
-import com.s5project.therapyroom.domain.Role;
-import com.s5project.therapyroom.domain.User;
-import com.s5project.therapyroom.dto.LoginDto;
-import com.s5project.therapyroom.dto.RegisterDto;
-import com.s5project.therapyroom.repository.RoleRepo;
-import com.s5project.therapyroom.service.UserService;
+import com.s5project.therapyroom.user.domain.Role;
+import com.s5project.therapyroom.user.domain.User;
+import com.s5project.therapyroom.user.dto.AuthResponseDto;
+import com.s5project.therapyroom.user.dto.LoginDto;
+import com.s5project.therapyroom.user.dto.RegisterDto;
+import com.s5project.therapyroom.user.repository.RoleRepo;
+import com.s5project.therapyroom.user.security.JWTGenerator;
+import com.s5project.therapyroom.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +31,8 @@ public class AuthController {
     private final UserService userService;
     private final PasswordEncoder passwordEncoder;
     private final RoleRepo roleRepo;
+    private final JWTGenerator jwtGenerator;
+
 
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody RegisterDto registerDto){
@@ -47,11 +51,12 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody LoginDto loginDto){
+    public ResponseEntity<AuthResponseDto> login(@RequestBody LoginDto loginDto){
         Authentication authentication =  authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginDto.getUsername(),
                 loginDto.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        return new ResponseEntity<>("successful User signing" , HttpStatus.OK);
+        String token = jwtGenerator.generateToken(authentication);
+        return new ResponseEntity<>(new AuthResponseDto(token) , HttpStatus.OK);
     }
 }

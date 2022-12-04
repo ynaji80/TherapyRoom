@@ -1,8 +1,8 @@
-package com.s5project.therapyroom.api;
+package com.s5project.therapyroom.user.api;
 
-import com.s5project.therapyroom.domain.Role;
-import com.s5project.therapyroom.domain.User;
-import com.s5project.therapyroom.service.UserService;
+import com.s5project.therapyroom.user.domain.Role;
+import com.s5project.therapyroom.user.domain.User;
+import com.s5project.therapyroom.user.service.UserService;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

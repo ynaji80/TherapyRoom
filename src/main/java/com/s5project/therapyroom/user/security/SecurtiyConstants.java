@@ -1,4 +1,4 @@
-package com.s5project.therapyroom.security;
+package com.s5project.therapyroom.user.security;
 
 public class SecurtiyConstants {
     public static final long JWT_EXPIRATION = 70000;

@@ -1,7 +1,7 @@
-package com.s5project.therapyroom.repository;
+package com.s5project.therapyroom.user.repository;
 
 
-import com.s5project.therapyroom.domain.Role;
+import com.s5project.therapyroom.user.domain.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface RoleRepo extends JpaRepository<Role, Long> {

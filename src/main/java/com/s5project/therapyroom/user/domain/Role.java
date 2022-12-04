@@ -1,4 +1,4 @@
-package com.s5project.therapyroom.domain;
+package com.s5project.therapyroom.user.domain;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

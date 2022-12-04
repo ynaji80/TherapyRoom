@@ -1,4 +1,4 @@
-package com.s5project.therapyroom.dto;
+package com.s5project.therapyroom.user.dto;
 
 import lombok.Data;
 

@@ -1,9 +1,9 @@
-package com.s5project.therapyroom.service;
+package com.s5project.therapyroom.user.service;
 
-import com.s5project.therapyroom.domain.Role;
-import com.s5project.therapyroom.domain.User;
-import com.s5project.therapyroom.repository.RoleRepo;
-import com.s5project.therapyroom.repository.UserRepo;
+import com.s5project.therapyroom.user.domain.Role;
+import com.s5project.therapyroom.user.domain.User;
+import com.s5project.therapyroom.user.repository.RoleRepo;
+import com.s5project.therapyroom.user.repository.UserRepo;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

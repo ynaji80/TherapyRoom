@@ -1,11 +1,7 @@
 package com.s5project.therapyroom;
 
-import com.s5project.therapyroom.domain.Role;
-import com.s5project.therapyroom.service.UserService;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class TherapyRoomApplication {
