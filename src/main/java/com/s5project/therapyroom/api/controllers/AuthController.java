@@ -52,6 +52,6 @@ public class AuthController {
                 new UsernamePasswordAuthenticationToken(loginDto.getUsername(),
                 loginDto.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        return new ResponseEntity<>("User signed successfully" , HttpStatus.OK);
+        return new ResponseEntity<>("User has signed successfully" , HttpStatus.OK);
     }
 }
