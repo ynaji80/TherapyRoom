@@ -1,7 +1,8 @@
-package com.s5project.spring.therapyroom.service;
+package com.s5project.therapyroom.service;
 
-import com.s5project.spring.therapyroom.domain.Role;
-import com.s5project.spring.therapyroom.domain.User;
+
+import com.s5project.therapyroom.domain.Role;
+import com.s5project.therapyroom.domain.User;
 
 import java.util.List;
 

@@ -1,14 +1,14 @@
-package com.s5project.spring.therapyroom.service;
+package com.s5project.therapyroom.service;
 
-import com.s5project.spring.therapyroom.domain.Role;
-import com.s5project.spring.therapyroom.domain.User;
-import com.s5project.spring.therapyroom.repository.RoleRepo;
-import com.s5project.spring.therapyroom.repository.UserRepo;
+import com.s5project.therapyroom.domain.Role;
+import com.s5project.therapyroom.domain.User;
+import com.s5project.therapyroom.repository.RoleRepo;
+import com.s5project.therapyroom.repository.UserRepo;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -41,7 +41,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public User getUser(String username) {
-        log.info("Fetch user {}",username);
+        log.info("Fetching user {} from the database",username);
         return userRepo.findByUsername(username);
     }
 
