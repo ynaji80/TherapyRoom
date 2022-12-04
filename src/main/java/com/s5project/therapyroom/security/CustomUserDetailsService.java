@@ -1,8 +1,8 @@
 package com.s5project.therapyroom.security;
 
-import com.projects.spring.employeeApp.domain.Role;
-import com.projects.spring.employeeApp.domain.User;
-import com.projects.spring.employeeApp.service.UserService;
+import com.s5project.therapyroom.domain.Role;
+import com.s5project.therapyroom.domain.User;
+import com.s5project.therapyroom.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
