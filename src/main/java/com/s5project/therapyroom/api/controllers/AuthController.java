@@ -42,7 +42,7 @@ public class AuthController {
         Role roles = roleRepo.findByName("ROLE_USER");
         user.setRoles(Collections.singletonList(roles));
         userService.saveUser(user);
-        return new ResponseEntity<>("User registeration success", HttpStatus.OK);
+        return new ResponseEntity<>("User registeration is successful", HttpStatus.OK);
 
     }
 
