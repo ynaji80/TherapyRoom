@@ -5,6 +5,7 @@ import com.s5project.therapyroom.user.domain.User;
 import com.s5project.therapyroom.user.dto.AuthResponseDto;
 import com.s5project.therapyroom.user.dto.LoginDto;
 import com.s5project.therapyroom.user.dto.RegisterDto;
+import com.s5project.therapyroom.user.dto.UserResponse;
 import com.s5project.therapyroom.user.repository.RoleRepo;
 import com.s5project.therapyroom.user.security.JWTGenerator;
 import com.s5project.therapyroom.user.service.UserService;
@@ -16,15 +17,14 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/auth")
+@CrossOrigin(origins = "http://localhost:8081")
 @RequiredArgsConstructor
 public class AuthController {
     private final AuthenticationManager authenticationManager;
@@ -57,6 +57,9 @@ public class AuthController {
                 loginDto.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String token = jwtGenerator.generateToken(authentication);
-        return new ResponseEntity<>(new AuthResponseDto(token) , HttpStatus.OK);
+        User user = userService.getUser(loginDto.getUsername());
+        UserResponse currentUser = new UserResponse(user.getName(),user.getUsername(),
+                user.getRoles().stream().map(role -> new String(role.getName())).collect(Collectors.toList()));
+        return new ResponseEntity<>(new AuthResponseDto(token,currentUser) , HttpStatus.OK);
     }
 }
