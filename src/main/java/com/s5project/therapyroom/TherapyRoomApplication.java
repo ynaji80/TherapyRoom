@@ -1,12 +1,27 @@
 package com.s5project.therapyroom;
 
+import com.s5project.therapyroom.user.domain.Role;
+import com.s5project.therapyroom.user.service.UserService;
+import net.kaczmarzyk.spring.data.jpa.web.SpecificationArgumentResolver;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.web.method.support.HandlerMethodArgumentResolver;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import java.util.List;
 
 @SpringBootApplication
-public class TherapyRoomApplication {
+@Configuration
+@EnableJpaRepositories
+public class TherapyRoomApplication implements WebMvcConfigurer {
 
     public static void main(String[] args) {
+
+        System.setProperty("spring.devtools.restart.enabled", "false");
         SpringApplication.run(TherapyRoomApplication.class, args);
     }
 
@@ -15,20 +30,13 @@ public class TherapyRoomApplication {
 //        return args -> {
 //            userService.saveRole(new Role(null, "ROLE_USER"));
 //            userService.saveRole(new Role(null, "ROLE_ADMIN"));
+//            userService.saveRole(new Role(null, "ROLE_DOCTOR"));
+//            userService.saveRole(new Role(null, "ROLE_PATIENT"));
 //        };
 //    }
+    @Override
+    public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
+        argumentResolvers.add(new SpecificationArgumentResolver());
+    }
 
-//            userService.saveUser(new User(null, "John Doe","john", "qwerty1234", new ArrayList<>()));
-//            userService.saveUser(new User(null, "Youness Naji","ynaji", "qwerty1234", new ArrayList<>()));
-//            userService.saveUser(new User(null, "Hamza bessa","hbessa", "qwerty1234", new ArrayList<>()));
-//            userService.saveUser(new User(null, "Oublal mhm","mhm", "qwerty1234", new ArrayList<>()));
-//
-//            userService.addRoleToUser("john", "ROLE_USER");
-//            userService.addRoleToUser("ynaji", "ROLE_USER");
-//            userService.addRoleToUser("ynaji", "ROLE_ADMIN");
-//            userService.addRoleToUser("ynaji", "ROLE_SUPER_ADMIN");
-//            userService.addRoleToUser("mhm", "ROLE_MANAGER");
-//
-//        };
-//    }
 }

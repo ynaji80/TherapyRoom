@@ -4,8 +4,10 @@ import com.s5project.therapyroom.user.domain.UserType;
 import lombok.Data;
 
 @Data
-public class RegisterDto {
+public class RegisterResponseDto {
+    private Long userId;
     private String username;
-    private String password;
     private UserType type;
+    private String message;
+
 }

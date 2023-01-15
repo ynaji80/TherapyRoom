@@ -8,12 +8,12 @@ import java.util.List;
 
 @Data
 public class UserResponse {
-    private String name;
+//    private String name;
     private String username;
     private List<String> roles;
 
-    public UserResponse(String name, String username, List<String> roles) {
-        this.name = name;
+    public UserResponse(String username, List<String> roles) {
+//        this.name = name;
         this.username = username;
         this.roles = roles;
     }
